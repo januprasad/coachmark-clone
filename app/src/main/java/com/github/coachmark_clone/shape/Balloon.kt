@@ -11,10 +11,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.RoundRect
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Outline
+import androidx.compose.ui.graphics.Paint
+import androidx.compose.ui.graphics.RenderEffect
+import androidx.compose.ui.graphics.addOutline
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import com.github.coachmark_clone.coachmark.SurfacePrimary
 import com.github.coachmark_clone.util.CoachMarkDefaults
 import com.github.coachmark_clone.util.toPx
 
@@ -35,13 +41,14 @@ public fun Balloon(
     padding: PaddingValues = CoachMarkDefaults.Balloon.padding,
     cornerRadius: Dp = CoachMarkDefaults.Balloon.cornerRadius,
     shadowElevation: Dp = CoachMarkDefaults.Balloon.shadowElevation,
-    bgColor: Color = CoachMarkDefaults.Balloon.bgColor,
+    bgColor: Color = Color.Red,
     content: @Composable BoxScope.() -> Unit
 ) {
     val density = LocalDensity.current
 
     Box(
         modifier = Modifier
+            .padding(vertical = padding.calculateTopPadding())
             .graphicsLayer {
                 shape = balloonShape(arrow, density, cornerRadius)
                 clip = true
@@ -54,7 +61,7 @@ public fun Balloon(
                 top = arrow.topPadding,
                 bottom = arrow.bottomPadding
             )
-            .padding(padding)
+//            .padding(padding)
             .then(modifier),
         content = content
     )

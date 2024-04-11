@@ -9,10 +9,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Outline
+import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.graphics.drawOutline
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
@@ -33,12 +38,12 @@ internal fun <T> rememberMutableStateOf(value: T, key: Any = true) = remember(ke
 
 internal fun Modifier.clickable(
     showRipple: Boolean = true,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) = this.composed {
     clickable(
         indication = if (showRipple) LocalIndication.current else null,
         interactionSource = remember { MutableInteractionSource() },
-        onClick = onClick
+        onClick = onClick,
     )
 }
 
@@ -60,20 +65,20 @@ internal fun coachMarkLog(vararg log: String) {
 public fun DrawScope.highlightActualView(
     toolTip: TooltipConfig,
     density: Density,
-    alpha: Float
+    alpha: Float,
 ) {
     val path = toolTip.highlightedViewShape.pathToHighlight(
         density = density,
         size = Size(
             width = toolTip.layout.width.toFloat(),
             height = toolTip.layout.height.toFloat(),
-        )
+        ),
     ).apply {
         translate(
             Offset(
                 x = toolTip.layout.startX,
                 y = toolTip.layout.startY,
-            )
+            ),
         )
     }
 
@@ -82,6 +87,11 @@ public fun DrawScope.highlightActualView(
         color = Color.Black,
         alpha = alpha,
         blendMode = BlendMode.DstOut,
+    )
+    drawRect(
+        color = Color.Black,
+        size = Size(10f,10f),
+        topLeft = Offset(0f,0f)
     )
 }
 

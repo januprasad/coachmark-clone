@@ -1,5 +1,7 @@
 package com.github.coachmark_clone.shape
 
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.unit.Density
@@ -61,7 +63,7 @@ public sealed interface Arrow {
     public data class Top(
         override val width: Dp = CoachMarkDefaults.Balloon.Arrow.width,
         override val height: Dp = CoachMarkDefaults.Balloon.Arrow.height,
-        override val bias: Float = CoachMarkDefaults.Balloon.Arrow.bias
+        override val bias: Float = CoachMarkDefaults.Balloon.Arrow.bias,
     ) : Arrow {
 
         override val topPadding: Dp = height
@@ -85,7 +87,7 @@ public sealed interface Arrow {
     public data class Bottom(
         override val width: Dp = CoachMarkDefaults.Balloon.Arrow.width,
         override val height: Dp = CoachMarkDefaults.Balloon.Arrow.height,
-        override val bias: Float = CoachMarkDefaults.Balloon.Arrow.bias
+        override val bias: Float = CoachMarkDefaults.Balloon.Arrow.bias,
     ) : Arrow {
 
         override val bottomPadding: Dp = height
@@ -109,7 +111,7 @@ public sealed interface Arrow {
     public data class Start(
         override val width: Dp = CoachMarkDefaults.Balloon.Arrow.width,
         override val height: Dp = CoachMarkDefaults.Balloon.Arrow.height,
-        override val bias: Float = CoachMarkDefaults.Balloon.Arrow.bias
+        override val bias: Float = CoachMarkDefaults.Balloon.Arrow.bias,
     ) : Arrow {
 
         override val startPadding: Dp = width
@@ -133,7 +135,7 @@ public sealed interface Arrow {
     public data class End(
         override val width: Dp = CoachMarkDefaults.Balloon.Arrow.width,
         override val height: Dp = CoachMarkDefaults.Balloon.Arrow.height,
-        override val bias: Float = CoachMarkDefaults.Balloon.Arrow.bias
+        override val bias: Float = CoachMarkDefaults.Balloon.Arrow.bias,
     ) : Arrow {
 
         override val endPadding: Dp = width
