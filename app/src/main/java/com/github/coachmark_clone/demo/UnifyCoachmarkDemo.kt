@@ -55,7 +55,7 @@ public fun UnifyCoachmarkDemo() {
                 item {
                     CoachMarkTargetText(
                         "Will show tooltip 32",
-                        Alignment.CenterHorizontally,
+                        Alignment.Start,
                         Keys.Text1,
                         ToolTipPlacement.Bottom,
                     )
@@ -66,18 +66,18 @@ public fun UnifyCoachmarkDemo() {
                 onClick = {
                     show(Keys.Text1)
                 },
-                modifier = Modifier.align(Alignment.CenterHorizontally),
+                modifier = Modifier.align(Alignment.Start),
             ) {
                 Text(text = "Highlight 1")
             }
-//            Button(
-//                onClick = {
-//                    show(*Keys.values())
-//                },
-//                modifier = Modifier.align(Alignment.CenterHorizontally),
-//            ) {
-//                Text(text = "Highlight All")
-//            }
+            Button(
+                onClick = {
+                    show(*Keys.values())
+                },
+                modifier = Modifier.align(Alignment.Start),
+            ) {
+                Text(text = "Highlight All")
+            }
 //            Button(onClick = { show(Keys.TextBottom, Keys.TextTop) }) {
 //                Text(text = "Highlight Some")
 //            }
@@ -125,7 +125,7 @@ private fun ColumnScope.CoachMarkTargetText(
     Text(
         text = text,
         modifier = Modifier
-            .fillMaxWidth()
+//            .fillMaxWidth()
             .align(alignment)
             .enableCoachMark(
                 key = key,

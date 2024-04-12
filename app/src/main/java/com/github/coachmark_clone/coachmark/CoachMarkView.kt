@@ -42,12 +42,12 @@ val SurfacePrimary: Color = White
 fun CoachMarkView() {
     Column(
         Modifier
-            .shadow(
-                elevation = 6.dp,
-                spotColor = Color(0x1A000000),
-                ambientColor = Color(0x1A000000),
-            )
-            .background(color = SurfacePrimary, RoundedCornerShape(8.dp))
+//            .shadow(
+//                elevation = 6.dp,
+//                spotColor = Color(0x1A000000),
+//                ambientColor = Color(0x1A000000),
+//            )
+//            .background(color = SurfacePrimary, RoundedCornerShape(8.dp))
             .widthIn(max = 428.dp)
             .wrapContentHeight()
             .padding(16.dp),

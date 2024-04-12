@@ -42,6 +42,6 @@ public object CoachMarkDefaults {
 
     public object HighlightedView {
         public val shape: Shape get() = RoundedCornerShape(12.dp)
-        public val padding: PaddingValues get() = PaddingValues(8.dp)
+        public val padding: PaddingValues get() = PaddingValues(12.dp)
     }
 }
