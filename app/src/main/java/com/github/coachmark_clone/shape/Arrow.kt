@@ -108,12 +108,32 @@ public sealed interface Arrow {
         override val endPadding: Dp = 0.dp
 
         override fun draw(size: Size, density: Density): Path = buildPath {
+//            val widthPx = width.toPx(density)
+//            val heightPx = height.toPx(density)
+//
+//            moveTo(size.width.times(bias) - widthPx.div(2), size.height - heightPx)
+//            lineTo(size.width.times(bias), size.height)
+//            lineTo(size.width.times(bias) + widthPx.div(2), size.height - heightPx)
+
             val widthPx = width.toPx(density)
             val heightPx = height.toPx(density)
-
-            moveTo(size.width.times(bias) - widthPx.div(2), size.height - heightPx)
-            lineTo(size.width.times(bias), size.height)
-            lineTo(size.width.times(bias) + widthPx.div(2), size.height - heightPx)
+            val recSize = 40f
+            val rectSize = Size(recSize, recSize)
+            val rect =
+                Rect(
+                    Offset(
+                        size.width
+                            .div(2)
+                            .minus(recSize.div(2)),
+                        size.height.minus(recSize.div(1.4f * 2f)),
+                    ),
+                    rectSize,
+                )
+            moveTo(rect.topLeft.x, rect.topLeft.y)
+            lineTo(rect.topRight.x, rect.topRight.y)
+//            lineTo(rect.bottomRight.x, rect.bottomRight.y)
+            lineTo(rect.bottomCenter.x, rect.bottomCenter.y)
+            close()
         }
     }
 
