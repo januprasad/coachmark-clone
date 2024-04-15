@@ -74,10 +74,22 @@ public sealed interface Arrow {
         override fun draw(size: Size, density: Density): Path = buildPath {
             val widthPx = width.toPx(density)
             val heightPx = height.toPx(density)
-
-            moveTo(size.width.times(bias) - widthPx.div(2), heightPx)
-            lineTo(size.width.times(bias), 0f)
-            lineTo(size.width.times(bias) + widthPx.div(2), heightPx)
+            val recSize = 40f
+            val rectSize = Size(recSize, recSize)
+            val rect =
+                Rect(
+                    Offset(
+                        size.width
+                            .div(2)
+                            .minus(recSize.div(2)),
+                        -recSize / 1.4f,
+                    ),
+                    rectSize,
+                )
+            moveTo(rect.topCenter.x, rect.topCenter.y)
+            lineTo(rect.bottomRight.x, rect.bottomRight.y)
+            lineTo(rect.bottomLeft.x, rect.bottomLeft.y)
+            close()
         }
     }
 

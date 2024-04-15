@@ -4,8 +4,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
@@ -25,7 +27,7 @@ import com.github.coachmark_clone.shape.Arrow
 import com.github.coachmark_clone.shape.Balloon
 import com.github.coachmark_clone.util.CoachMarkKey
 
-public enum class Keys { Text1, Text2, TextStart, TextBottom, TextTop }
+public enum class Keys { Text1, Text2, Text3, TextStart, TextBottom, TextTop }
 
 @Composable
 public fun UnifyCoachmarkDemo() {
@@ -40,7 +42,7 @@ public fun UnifyCoachmarkDemo() {
                 .padding(12.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            PlotTextsAndUseLocalCoachMarkScope()
+//            PlotTextsAndUseLocalCoachMarkScope()
             CoachMarkTargetText(
                 "Will show tooltip 1",
                 Alignment.Start,
@@ -48,16 +50,23 @@ public fun UnifyCoachmarkDemo() {
                 ToolTipPlacement.Bottom,
             )
 
+            CoachMarkTargetText(
+                "Will show tooltip 2",
+                Alignment.Start,
+                Keys.Text2,
+                ToolTipPlacement.Bottom,
+            )
+            Spacer(modifier = Modifier.height(200.dp))
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth(),
             ) {
                 item {
                     CoachMarkTargetText(
-                        "Will show tooltip 32",
-                        Alignment.Start,
-                        Keys.Text1,
-                        ToolTipPlacement.Bottom,
+                        "Will show tooltip 3",
+                        Alignment.CenterHorizontally,
+                        Keys.Text3,
+                        ToolTipPlacement.Top,
                     )
                 }
             }
@@ -72,12 +81,28 @@ public fun UnifyCoachmarkDemo() {
             }
             Button(
                 onClick = {
-                    show(*Keys.values())
+                    show(Keys.Text2)
                 },
                 modifier = Modifier.align(Alignment.Start),
             ) {
-                Text(text = "Highlight All")
+                Text(text = "Highlight 2")
             }
+            Button(
+                onClick = {
+                    show(Keys.Text3)
+                },
+                modifier = Modifier.align(Alignment.Start),
+            ) {
+                Text(text = "Highlight 3")
+            }
+//            Button(
+//                onClick = {
+//                    show(*Keys.values())
+//                },
+//                modifier = Modifier.align(Alignment.Start),
+//            ) {
+//                Text(text = "Highlight All")
+//            }
 //            Button(onClick = { show(Keys.TextBottom, Keys.TextTop) }) {
 //                Text(text = "Highlight Some")
 //            }
@@ -87,9 +112,19 @@ public fun UnifyCoachmarkDemo() {
 
 @Composable
 private fun ColumnScope.PlotTextsAndUseLocalCoachMarkScope() {
-    CoachMarkTargetText("Will show tooltip 1", Alignment.Start, Keys.Text1, ToolTipPlacement.End)
+    CoachMarkTargetText(
+        "Will show tooltip 1",
+        Alignment.Start,
+        Keys.Text1,
+        ToolTipPlacement.Bottom,
+    )
 
-    CoachMarkTargetText("Will show tooltip 2", Alignment.Start, Keys.Text2, ToolTipPlacement.Bottom)
+    CoachMarkTargetText(
+        "Will show tooltip 2",
+        Alignment.Start,
+        Keys.Text2,
+        ToolTipPlacement.Bottom,
+    )
 
     CoachMarkTargetText(
         "Will show tooltip to left",
@@ -151,8 +186,14 @@ private fun Tooltip(key: CoachMarkKey) {
         }
 
         Keys.Text2 -> {
-            Balloon(arrow = Arrow.Start()) {
-                Text(text = "Highlighting Text2", color = Color.White)
+            Balloon(arrow = Arrow.Top()) {
+                CoachMarkView()
+            }
+        }
+
+        Keys.Text3 -> {
+            Balloon(arrow = Arrow.Bottom()) {
+                CoachMarkView()
             }
         }
 

@@ -50,14 +50,14 @@ public fun OverlayLayout(
             layoutId = TooltipId.current,
             measurables = measurables,
             constraintsParent = constraints,
-            gapTooltipScreenPx = gapTooltipScreenPx
+            gapTooltipScreenPx = gapTooltipScreenPx,
         )
         val placeablePrevious = measure(
             tooltipConfig = configPrevious,
             layoutId = TooltipId.previous,
             measurables = measurables,
             constraintsParent = constraints,
-            gapTooltipScreenPx = gapTooltipScreenPx
+            gapTooltipScreenPx = gapTooltipScreenPx,
         )
 
         // place children
@@ -67,7 +67,6 @@ public fun OverlayLayout(
         }
     }
 }
-
 
 /**
  * @param layoutId use consts from TooltipId
@@ -154,7 +153,7 @@ private fun Placeable.PlacementScope.place(placeable: Placeable?, config: Toolti
             }
 
             ToolTipPlacement.Top -> {
-                x = centerHorizontally()
+                x = layout.startX.toInt()
                 y = layout.startY.toInt() - placeable.height
             }
 

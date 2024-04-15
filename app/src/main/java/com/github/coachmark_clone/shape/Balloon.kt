@@ -139,12 +139,13 @@ fun DrawScope.drawArrowRoundRect(
                 ),
                 rectSize,
             )
-        val trianglePath = Path().apply {
-            moveTo(rect.topCenter.x, rect.topCenter.y)
-            lineTo(rect.bottomRight.x, rect.bottomRight.y)
-            lineTo(rect.bottomLeft.x, rect.bottomLeft.y)
-            close()
-        }
+//        val trianglePath = Path().apply {
+//            moveTo(rect.topCenter.x, rect.topCenter.y)
+//            lineTo(rect.bottomRight.x, rect.bottomRight.y)
+//            lineTo(rect.bottomLeft.x, rect.bottomLeft.y)
+//            close()
+//        }
+        val trianglePath = arrow.draw(this.size, density)
         translate(0f, 0f) {
             drawIntoCanvas {
                 it.drawOutline(
