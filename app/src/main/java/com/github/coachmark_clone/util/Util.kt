@@ -88,11 +88,11 @@ public fun DrawScope.highlightActualView(
         alpha = alpha,
         blendMode = BlendMode.DstOut,
     )
-    drawRect(
-        color = Color.Black,
-        size = Size(10f,10f),
-        topLeft = Offset(0f,0f)
-    )
+//    drawRect(
+//        color = Color.Black,
+//        size = Size(10f,10f),
+//        topLeft = Offset(0f,0f)
+//    )
 }
 
 internal fun log(msg: String) {

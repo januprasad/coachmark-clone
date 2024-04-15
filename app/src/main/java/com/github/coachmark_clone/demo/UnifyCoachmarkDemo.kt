@@ -160,7 +160,7 @@ private fun ColumnScope.CoachMarkTargetText(
     Text(
         text = text,
         modifier = Modifier
-//            .fillMaxWidth()
+            .fillMaxWidth()
             .align(alignment)
             .enableCoachMark(
                 key = key,

@@ -125,13 +125,12 @@ public sealed interface Arrow {
                         size.width
                             .div(2)
                             .minus(recSize.div(2)),
-                        size.height.minus(recSize.div(1.4f * 2f)),
+                        size.height.minus(recSize.div(1.4f * 3)),
                     ),
                     rectSize,
                 )
             moveTo(rect.topLeft.x, rect.topLeft.y)
             lineTo(rect.topRight.x, rect.topRight.y)
-//            lineTo(rect.bottomRight.x, rect.bottomRight.y)
             lineTo(rect.bottomCenter.x, rect.bottomCenter.y)
             close()
         }
