@@ -59,7 +59,7 @@ public fun Balloon(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 30.dp)
+            .padding(vertical = 20.dp)
 //            .background(bgColor)
             .graphicsLayer {
                 this.shadowElevation = shadowElevation.toPx(density)
@@ -73,38 +73,38 @@ public fun Balloon(
                     bg = bgColor,
                 )
             }
-            .padding(
-                start = arrow.startPadding,
-                end = arrow.endPadding,
-                top = arrow.topPadding,
-                bottom = arrow.bottomPadding,
-            )
-//            .padding(padding)
+//            .padding(
+//                start = arrow.startPadding,
+//                end = arrow.endPadding,
+//                top = arrow.topPadding,
+//                bottom = arrow.bottomPadding,
+//            )
+            .padding(padding)
             .then(modifier),
         content = content,
     )
     PaddingValues().calculateBottomPadding()
 }
 
-private fun balloonShape(
-    arrow: Arrow,
-    density: Density,
-    radius: Dp,
-) = GenericShape { size, _ ->
-
-    addRoundRect(
-        RoundRect(
-            left = arrow.startPadding.toPx(density),
-            right = size.width - arrow.endPadding.toPx(density),
-            top = arrow.topPadding.toPx(density),
-            bottom = size.height - arrow.bottomPadding
-                .toPx(density),
-            cornerRadius = CornerRadius(radius.toPx(density)),
-        ),
-    )
-
-    addPath(arrow.draw(size, density))
-}
+//private fun balloonShape(
+//    arrow: Arrow,
+//    density: Density,
+//    radius: Dp,
+//) = GenericShape { size, _ ->
+//
+//    addRoundRect(
+//        RoundRect(
+//            left = arrow.startPadding.toPx(density),
+//            right = size.width - arrow.endPadding.toPx(density),
+//            top = arrow.topPadding.toPx(density),
+//            bottom = size.height - arrow.bottomPadding
+//                .toPx(density),
+//            cornerRadius = CornerRadius(radius.toPx(density)),
+//        ),
+//    )
+//
+//    addPath(arrow.draw(size, density))
+//}
 
 fun DrawScope.drawArrowRoundRect(
     arrow: Arrow,
@@ -152,7 +152,7 @@ fun DrawScope.drawArrowRoundRect(
                     outline = Outline.Generic(trianglePath),
                     paint = Paint().apply {
                         color = bg
-                        pathEffect = PathEffect.cornerPathEffect(rect.maxDimension / 3)
+                        pathEffect = PathEffect.cornerPathEffect(rect.maxDimension / 5)
                     },
                 )
             }

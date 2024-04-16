@@ -17,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.github.coachmark_clone.coachmark.CoachMarkView
 import com.github.coachmark_clone.model.HighlightedViewConfig
 import com.github.coachmark_clone.model.OverlayClickEvent
 import com.github.coachmark_clone.model.ToolTipPlacement
@@ -66,7 +65,7 @@ public fun UnifyCoachmarkDemo() {
                         "Will show tooltip 3",
                         Alignment.CenterHorizontally,
                         Keys.Text3,
-                        ToolTipPlacement.Top,
+                        ToolTipPlacement.Bottom,
                     )
                 }
             }
@@ -180,38 +179,39 @@ private fun ColumnScope.CoachMarkTargetText(
 private fun Tooltip(key: CoachMarkKey) {
     when (key) {
         Keys.Text1 -> {
-            Balloon(arrow = Arrow.Top()) {
-                CoachMarkView()
+            Balloon(arrow = Arrow.TopCenter()) {
+                Text(text = "A tooltip top center", color = Color.Black)
             }
         }
 
         Keys.Text2 -> {
-            Balloon(arrow = Arrow.Top()) {
-                CoachMarkView()
+            Balloon(arrow = Arrow.TopStart()) {
+                Text(text = "A tooltip top start", color = Color.Black)
             }
         }
 
         Keys.Text3 -> {
-            Balloon(arrow = Arrow.Bottom()) {
-                CoachMarkView()
+            Balloon(arrow = Arrow.TopEnd()) {
+//                CoachMarkView()
+                Text(text = "A tooltip top end", color = Color.Black)
             }
         }
 
         Keys.TextStart -> {
-            Balloon(arrow = Arrow.End()) {
-                Text(text = "A tooltip to the left", color = Color.White)
+            Balloon(arrow = Arrow.TopEnd()) {
+                Text(text = "A tooltip to the left", color = Color.Black)
             }
         }
 
         Keys.TextBottom -> {
-            Balloon(arrow = Arrow.Top()) {
-                Text(text = "A tooltip below", color = Color.White)
+            Balloon(arrow = Arrow.TopCenter()) {
+                Text(text = "A tooltip below", color = Color.Black)
             }
         }
 
         Keys.TextTop -> {
-            Balloon(arrow = Arrow.Bottom()) {
-                Text(text = "A tooltip above", color = Color.White)
+            Balloon(arrow = Arrow.BottomCenter()) {
+                Text(text = "A tooltip above", color = Color.Black)
             }
         }
     }
