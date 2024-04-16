@@ -1,5 +1,6 @@
 package com.github.coachmark_clone.shape
 
+import android.util.Log
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
@@ -74,64 +75,21 @@ public sealed interface Arrow {
         override val bottomPadding: Dp = 0.dp
 
         override fun draw(size: Size, density: Density): Path = buildPath {
-            val recSize = 40f
+            val recSize = 16f * 2
             val rectSize = Size(recSize, recSize)
             val rect =
                 Rect(
                     Offset(
                         size.width
-                            .div(2)
+                            .div(4)
                             .minus(recSize.div(2)),
                         -recSize / 1.4f,
                     ),
                     rectSize,
                 )
-            moveTo(rect.topCenter.x, rect.topCenter.y)
-            lineTo(rect.bottomRight.x, rect.bottomRight.y)
-            lineTo(rect.bottomLeft.x, rect.bottomLeft.y)
-            close()
-        }
-    }
-
-    /**
-     * draws arrow at bottom of view
-     */
-    public data class BottomCenter(
-        override val width: Dp = CoachMarkDefaults.Balloon.Arrow.width,
-        override val height: Dp = CoachMarkDefaults.Balloon.Arrow.height,
-        override val bias: Float = CoachMarkDefaults.Balloon.Arrow.bias,
-    ) : Arrow {
-
-        override val bottomPadding: Dp = height
-        override val topPadding: Dp = 0.dp
-        override val startPadding: Dp = 0.dp
-        override val endPadding: Dp = 0.dp
-
-        override fun draw(size: Size, density: Density): Path = buildPath {
-//            val widthPx = width.toPx(density)
-//            val heightPx = height.toPx(density)
-//
-//            moveTo(size.width.times(bias) - widthPx.div(2), size.height - heightPx)
-//            lineTo(size.width.times(bias), size.height)
-//            lineTo(size.width.times(bias) + widthPx.div(2), size.height - heightPx)
-
-            val widthPx = width.toPx(density)
-            val heightPx = height.toPx(density)
-            val recSize = 40f
-            val rectSize = Size(recSize, recSize)
-            val rect =
-                Rect(
-                    Offset(
-                        size.width
-                            .div(2)
-                            .minus(recSize.div(2)),
-                        size.height.minus(recSize.div(1.4f * 3)),
-                    ),
-                    rectSize,
-                )
-            moveTo(rect.topLeft.x, rect.topLeft.y)
-            lineTo(rect.topRight.x, rect.topRight.y)
-            lineTo(rect.bottomCenter.x, rect.bottomCenter.y)
+            moveTo(rect.topCenter.x * 2, rect.topCenter.y)
+            lineTo(rect.bottomRight.x * 2, rect.bottomRight.y)
+            lineTo(rect.bottomLeft.x * 2, rect.bottomLeft.y)
             close()
         }
     }
@@ -186,10 +144,12 @@ public sealed interface Arrow {
             val recSize = 16f * 2
             val rectSize = Size(recSize, recSize)
             val widthPx = size.width.dp.toPx(density)
+            Log.v("width", widthPx.toString())
             val rect =
                 Rect(
                     Offset(
-                        widthPx.div(200),
+                        size.width
+                            .div(2).minus(recSize * 1.4f),
                         -recSize / 1.4f,
                     ),
                     rectSize,
@@ -197,6 +157,130 @@ public sealed interface Arrow {
             moveTo(rect.topCenter.x * 2, rect.topCenter.y)
             lineTo(rect.bottomRight.x * 2, rect.bottomRight.y)
             lineTo(rect.bottomLeft.x * 2, rect.bottomLeft.y)
+            close()
+        }
+    }
+
+    /**
+     * draws arrow at bottom of view
+     */
+    public data class BottomCenter(
+        override val width: Dp = CoachMarkDefaults.Balloon.Arrow.width,
+        override val height: Dp = CoachMarkDefaults.Balloon.Arrow.height,
+        override val bias: Float = CoachMarkDefaults.Balloon.Arrow.bias,
+    ) : Arrow {
+
+        override val bottomPadding: Dp = height
+        override val topPadding: Dp = 0.dp
+        override val startPadding: Dp = 0.dp
+        override val endPadding: Dp = 0.dp
+
+        override fun draw(size: Size, density: Density): Path = buildPath {
+//            val widthPx = width.toPx(density)
+//            val heightPx = height.toPx(density)
+//
+//            moveTo(size.width.times(bias) - widthPx.div(2), size.height - heightPx)
+//            lineTo(size.width.times(bias), size.height)
+//            lineTo(size.width.times(bias) + widthPx.div(2), size.height - heightPx)
+
+            val widthPx = width.toPx(density)
+            val heightPx = height.toPx(density)
+            val recSize = 16f * 2
+            val rectSize = Size(recSize, recSize)
+            val rect =
+                Rect(
+                    Offset(
+                        size.width
+                            .div(4)
+                            .minus(recSize.div(2)),
+                        size.height.minus(recSize.div(1.4f * 3)),
+                    ),
+                    rectSize,
+                )
+            moveTo(rect.topLeft.x * 2, rect.topLeft.y)
+            lineTo(rect.topRight.x * 2, rect.topRight.y)
+            lineTo(rect.bottomCenter.x * 2, rect.bottomCenter.y)
+            close()
+        }
+
+        /**
+         * draws arrow at bottom of view
+         */
+    }
+
+    public data class BottomStart(
+        override val width: Dp = CoachMarkDefaults.Balloon.Arrow.width,
+        override val height: Dp = CoachMarkDefaults.Balloon.Arrow.height,
+        override val bias: Float = CoachMarkDefaults.Balloon.Arrow.bias,
+    ) : Arrow {
+
+        override val bottomPadding: Dp = height
+        override val topPadding: Dp = 0.dp
+        override val startPadding: Dp = 0.dp
+        override val endPadding: Dp = 0.dp
+
+        override fun draw(size: Size, density: Density): Path = buildPath {
+//            val widthPx = width.toPx(density)
+//            val heightPx = height.toPx(density)
+//
+//            moveTo(size.width.times(bias) - widthPx.div(2), size.height - heightPx)
+//            lineTo(size.width.times(bias), size.height)
+//            lineTo(size.width.times(bias) + widthPx.div(2), size.height - heightPx)
+
+            val widthPx = width.toPx(density)
+            val heightPx = height.toPx(density)
+            val recSize = 16f * 2
+            val rectSize = Size(recSize, recSize)
+            val rect =
+                Rect(
+                    Offset(
+                        recSize.div(1.4f),
+                        size.height.minus(recSize.div(1.4f * 3)),
+                    ),
+                    rectSize,
+                )
+            moveTo(rect.topLeft.x * 2, rect.topLeft.y)
+            lineTo(rect.topRight.x * 2, rect.topRight.y)
+            lineTo(rect.bottomCenter.x * 2, rect.bottomCenter.y)
+            close()
+        }
+    }
+
+    public data class BottomEnd(
+        override val width: Dp = CoachMarkDefaults.Balloon.Arrow.width,
+        override val height: Dp = CoachMarkDefaults.Balloon.Arrow.height,
+        override val bias: Float = CoachMarkDefaults.Balloon.Arrow.bias,
+    ) : Arrow {
+
+        override val bottomPadding: Dp = height
+        override val topPadding: Dp = 0.dp
+        override val startPadding: Dp = 0.dp
+        override val endPadding: Dp = 0.dp
+
+        override fun draw(size: Size, density: Density): Path = buildPath {
+//            val widthPx = width.toPx(density)
+//            val heightPx = height.toPx(density)
+//
+//            moveTo(size.width.times(bias) - widthPx.div(2), size.height - heightPx)
+//            lineTo(size.width.times(bias), size.height)
+//            lineTo(size.width.times(bias) + widthPx.div(2), size.height - heightPx)
+
+            val widthPx = width.toPx(density)
+            val heightPx = height.toPx(density)
+            val recSize = 16f * 2
+            val rectSize = Size(recSize, recSize)
+            val rect =
+                Rect(
+                    Offset(
+                        size.width
+                            .div(2).minus(recSize * 1.4f),
+                        size.height.minus(recSize.div(1.4f * 3)),
+                    ),
+                    rectSize,
+                )
+            moveTo(rect.topLeft.x*2, rect.topLeft.y)
+            lineTo(rect.topRight.x*2, rect.topRight.y)
+            lineTo(rect.bottomCenter.x*2, rect.bottomCenter.y)
             close()
         }
     }
