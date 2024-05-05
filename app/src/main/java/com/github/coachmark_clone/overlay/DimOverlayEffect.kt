@@ -17,7 +17,7 @@ import com.github.coachmark_clone.util.highlightActualView
  * @param paddingForTooltip min distance between tooltip and left/right side of screen/overlay
  */
 public class DimOverlayEffect(
-    private val color: Color = Color.Black.copy(alpha = .75f),
+    private val color: Color = Color.Black.copy(alpha = .95f),
     override val overlayAnimationSpec: AnimationSpec<Float> = CoachMarkDefaults.Overlay.animationSpec,
     private val paddingForTooltip: Dp = CoachMarkDefaults.ToolTip.paddingForTooltip,
 ) : UnifyOverlayEffect {

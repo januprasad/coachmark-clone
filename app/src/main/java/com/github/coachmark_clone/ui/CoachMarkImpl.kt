@@ -1,11 +1,13 @@
 package com.github.coachmark_clone.ui
 
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layoutId
 import com.github.coachmark_clone.overlay.TooltipId
 import com.github.coachmark_clone.overlay.UnifyOverlayEffect

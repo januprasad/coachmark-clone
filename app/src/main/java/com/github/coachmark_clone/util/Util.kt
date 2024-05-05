@@ -84,7 +84,7 @@ public fun DrawScope.highlightActualView(
 
     drawPath(
         path = path,
-        color = Color.Black,
+        color = Color.White,
         alpha = alpha,
         blendMode = BlendMode.DstOut,
     )
