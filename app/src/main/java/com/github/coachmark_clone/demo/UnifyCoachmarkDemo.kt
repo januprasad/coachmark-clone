@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -37,6 +39,7 @@ public fun UnifyCoachmarkDemo() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .verticalScroll(rememberScrollState())
                 .padding(12.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
@@ -60,19 +63,19 @@ public fun UnifyCoachmarkDemo() {
                 Keys.Text2,
                 ToolTipPlacement.Bottom,
             )
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxWidth(),
-            ) {
-                item {
+//            LazyColumn(
+//                modifier = Modifier
+//                    .fillMaxWidth(),
+//            ) {
+//                item {
                     CoachMarkTargetButton(
                         "Sent to Phone",
                         Alignment.CenterHorizontally,
                         Keys.Text3,
                         ToolTipPlacement.Bottom,
                     )
-                }
-            }
+//                }
+//            }
 
             CoachMarkTargetButton(
                 "Pay Electricity Bill",
@@ -88,6 +91,24 @@ public fun UnifyCoachmarkDemo() {
                 ToolTipPlacement.Top,
             )
 
+            CoachMarkTargetButton(
+                "Enable Push Notifications",
+                Alignment.Start,
+                Keys.TextBottom,
+                ToolTipPlacement.Top,
+            )
+            CoachMarkTargetButton(
+                "Enable Push Notifications",
+                Alignment.Start,
+                Keys.TextBottom,
+                ToolTipPlacement.Top,
+            )
+            CoachMarkTargetButton(
+                "Enable Push Notifications",
+                Alignment.Start,
+                Keys.TextBottom,
+                ToolTipPlacement.Top,
+            )
             CoachMarkTargetButton(
                 "Enable Push Notifications",
                 Alignment.Start,

@@ -59,7 +59,7 @@ public fun Balloon(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 20.dp)
+            .padding(horizontal = 16.dp, vertical = 16.dp)
 //            .background(bgColor)
             .graphicsLayer {
                 this.shadowElevation = shadowElevation.toPx(density)

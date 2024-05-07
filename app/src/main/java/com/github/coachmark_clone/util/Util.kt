@@ -70,13 +70,13 @@ public fun DrawScope.highlightActualView(
     val path = toolTip.highlightedViewShape.pathToHighlight(
         density = density,
         size = Size(
-            width = toolTip.layout.width.toFloat(),
+            width = toolTip.layout.width.toFloat()-64f,
             height = toolTip.layout.height.toFloat(),
         ),
     ).apply {
         translate(
             Offset(
-                x = toolTip.layout.startX,
+                x = toolTip.layout.startX+32f,
                 y = toolTip.layout.startY,
             ),
         )
